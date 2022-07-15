@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Ajax</title>
+</head>
+
+
+<body>
+    <label>
+        IP:
+        <input type="text" id="txtIp" value="8.8.8.8">
+    </label> 
+    
+    <p>
+        <input type="button" value="Buscar" onclick="buscarIp()">
+    </p>
+
+    <p id="paragrafo">
+
+    </p>
+
+    <script>
+        function buscarIp() {
+            const apiKey = "55559e171c9910dc12daa55950874906"
+            const ip = document.getElementById("txtIp").value
+            const paragrafo = document.getElementById("paragrafo")
+
+            fetch(`http://api.ipstack.com/${ip}?access_key=${apiKey}`)
+            .then(req => req.json()) //para converter em json
+            .then(json => paragrafo.innerText = json.country_name) //transforma de json para o nome do país. O nome country_name é do próprio site.
+            .catch(err => paragrafo.innerText = err) //o catch só é executado se .then não der certo
+        }
+    </script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testes de Event Listener Window</title>
+</head>
+
+
+<body>
+    <h1>
+        Testando DOM
+    </h1>
+
+    <input type="button" value="Teste" onclick="exibirMensagem()">
+
+    <select onchange="exibirUf(this.value)">
+        <option value="RS">Rio Grande do Sul</option>
+        <option value="SC">Santa Catarina</option>
+        <option value="PR">Parana</option>
+    </select>
+
+    <div onmouseenter="exibirOutraMensagem('entrou!')" onmouseleave="exibirOutraMensagem('saiu')">
+        Teste
+    </div>
+
+    <input type="text" onfocus="exibirOutraMensagem('entrou!')" onblur="exibirOutraMensagem('saiu!')">
+
+    <input type="text" onkeypress="return validarNumeros(event)">
+
+    <script>
+        function exibirMensagem() {
+            alert("Funcionou!")
+        }
+
+        function exibirUf(uf) {
+            alert(uf)
+        }
+
+        function exibirOutraMensagem(msg){
+            alert(msg)
+        }
+
+        function validarNumeros(e) {
+            let unicode = e.charCode ? e.charCode : e.keyCode
+            if (unicode!=8) { //8 é o backspace da ASCII
+                if (unicode<48 || unicode>57) //se não for um número
+                    return false //não permite outros valores além de números
+            }
+        }
+
+    </script>
+    
+</body>
+
+
+</html>

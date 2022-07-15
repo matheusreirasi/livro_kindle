@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Manipulando DOM</title>
+</head>
+
+
+<body>
+    <h1>
+        Exemplo de DOM
+    </h1>    
+
+    <p>
+        Sistema para exemplificar manipulação de DOM
+    </p>
+
+    <div id="divCadastro">
+        <h2>
+            Cadastro
+        </h2>
+
+        <form id="frmCadastro" action="method">
+            <p>
+                <label> Nome: <input type="text" name="nome"></label>
+            </p>
+
+            <p>
+                <label> Idade: <input type="number" name="idade"></label>
+            </p>
+
+            <p>
+                <label> UF: 
+                    <select name="uf">
+                        <option>RJ</option>
+                        <option>ES</option>
+                        <option>MG</option>
+                        <option>SP</option>
+                    </select>
+                </label>
+            </p>
+
+            <p>
+                <input type="button" id="btnListar" value="Listar"> | <input type="submit" value="Salvar">
+            </p>
+        </form>
+
+    </div>
+
+    <div id="divListagem">
+        <h2>
+            Listagem
+        </h2>
+
+        <table cellspacing="0">
+            <thead>
+                <tr>
+                    <td>
+                        Nome:
+                    </td>
+                    <td>
+                        Idade:
+                    </td>
+                    <td>
+                        UF:
+                    </td>
+                    <td>
+                        Ações:
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td colspan="4">
+                        Nenhum cliente cadastrado
+                    </td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <input type="button" id="btnCadastrar" value="Cadastrar">
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+
+</html>
