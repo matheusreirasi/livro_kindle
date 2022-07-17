@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD de clientes</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
@@ -10,29 +13,30 @@
     <h1> <%= title %> </h1>
     <p>Preencha os dados abaixo para salvar o cliente.</p>
 
-    <form method="post" action=""></form>
+    <form method="post" action=" <%= action %>" ></form>
       <div>
-        <label for=""> Nome:<input type="text" name="nome"> </label>
+        <label> Nome:<input type="text" name="nome" value="<%= docs.nome %>"/> </label>
       </div>
 
       <div>
-        <label for=""> Idade: <input type="number" name="idade"></label>
+        <label> Idade: <input type="number" name="idade" value="<%= docs.idade %>" /></label>
       </div>
 
       <div>
-        <label for="">UF: 
-          <select name="uf" id="">
+        <label>UF: 
+          <select name="uf">
+            <% const s = "selected" %>
             <option> Selecione</option>
-            <option >
+            <option <% if (docs.uf === "RJ") {%> <%= s %> <%} %> >
               RJ
             </option>
-            <option>
+            <option <% if (docs.uf === "SP") {%> <%= s %> <%} %> >
               SP
             </option>
-            <option>
+            <option <% if (docs.uf === "MG") {%> <%= s %> <%} %>  >
               MG
             </option>
-            <option>
+            <option <% if (docs.uf === "ES") {%> <%= s %> <%} %>  >
               ES
             </option>
           </select>
@@ -40,7 +44,7 @@
       </div>
 
       <div>
-        <a href="/"> Cancelar</a> |
+        <a href="/"> Cancelar Cadastro</a> |
         <input type="submit" value="Salvar">
       </div>
 
