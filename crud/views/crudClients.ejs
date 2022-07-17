@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= title %> </title> <!--Acho q usar server-tag é mais pesado-->
+    <link rel="stylesheet" href="/stylesheets/style.css"> <!--No exemplo do livro o css tá diferente-->
+</head>
+
+<body>
+    <h1> <%= title %> </h1>
+    <p> Preencha os dados abaixo para salvar o cliente</p>
+
+    
+    <form method="POST" action=" <%= action %> "> <!-- Tudo dentro de formulário será enviado para o arquivo "crudClientsRoute.js" pois é ele que contém esse "<%=action%>". -->
+    <!--Se não for passado nenhum "method" então por padrão será usado HTTP GET, como essa é uma tela de cadastro então é necessário especificar que é um comando POST-->
+
+    
+
+        <p>
+            <label> Nome: <input type="text" name="nome" value="<%= doc.nome %>"> </label>
+        </p>
+        <p>
+            <label> Idade: <input type="number" name="idade" value="<%= doc.idade %>"> </label> 
+        </p>
+        <p>
+            <label> UF: 
+                <select name="uf">
+                    <% const s = 'selected' %>
+                    <option> Selecione:</option>
+                    <option <% if (doc.uf === 'RJ'){%> <%= s %> <%}%> >
+                        RJ
+                    </option>
+                    <option <% if (doc.uf === 'SP'){%> <%= s %> <%}%> >
+                        SP
+                    </option>
+                    <option <% if (doc.uf === 'MG'){%> <%= s %> <%}%> >
+                        MG
+                    </option>
+                    <option <% if (doc.uf === 'ES'){%> <%= s %> <%}%> >
+                        ES
+                    </option>
+                    <!--Existem maneiras melhores de fazer isso ao invés de colocar if em cada opção-->
+                </select> 
+            </label>
+        </p>
+        <p>
+            <a href="/"> Cancelar Cadastro </a> | <input type="submit" value="Salvar"> <!--Quando eu envio o cadastro clicando em salvar aparece erro 404 -->
+        </p>
+    </form>
+
+    <footer>
+        <p>
+            Só pra avisar que CRUD quer dizer create, retrieve, update e delete
+        </p>
+
+        <p>
+            A diferença entre o code <ins>input type="submit"</ins> e <ins>input type="button"</ins> é que o primeiro submete todos os dados contidos dentro da tag <code><ins>&lt;form&gt;</ins></code> para o servidor e o primeiro dispara um código javascript 
+        </p>
+
+        <p>
+            Acho que o atributo <ins>"name:"</ins> é usado para enviar pro servidor. O valor contido dentro desse atributo será o mesmo que está no banco de dados e irá armazenar os dados passados.
+            <br>
+        </p>
+
+        <p>
+            Já no caso da tag <code><ins>&lt;option&gt;</ins></code>, que fica dentro da tag <code><ins>&lt;select&gt;</ins></code>, possui o atributo <ins>"value":</ins> que exerce a mesma função de <ins>"name":</ins>.
+            <br>
+            Como no caso do código dessa página, o <ins>"value:RJ"</ins> que é atributo da tag <code><ins>&lt;option&gt;</ins></code> e esta tag está dentro da tag <code><ins>&lt;select&gt;</ins></code> possui o atributo <ins>"name:uf"</ins>. Tudo isso quer dizer que a coluna uf (que no HTML desse site é o <ins>"name:uf"</ins> contido na tag <code><ins>&lt;select&gt;</ins></code>) do banco de dados armazenará um dos valores contidos dentro do atributo de <ins>"value:"</ins> da tag <code><ins>&lt;option&gt;</ins></code>.
+        </p>
+        <p>
+            Acho que usando NodeJs não preciso passar todos esses atributos dentro de cada tag, somente passar os atributos e valores  <ins>"action: &lt;%= action %&gt; </ins> lá na tag <code><ins>&lt;form&gt;</ins></code> porque eu já especifiquei no arquivo "crudClientsRouter.js" o valor de "action"
+        </p>
+    </footer>
+</body>
+</html>
