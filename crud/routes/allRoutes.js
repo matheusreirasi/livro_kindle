@@ -16,6 +16,7 @@ router.post("/", async (req, res) => {
   const idade = parseInt(req.body.idade)
   const uf = req.body.uf
   await db.insert({nome, idade, uf})
+  res.redirect("/?index=true")
 })
 
 
@@ -45,7 +46,8 @@ router.post ("/edit/:id", async (req, res) => {
   const nome = req.body.nome
   const idade = parseInt(req.body.idade)
   const uf = req.body.uf
-  await db.updateOne(id, {nome, idade, uf})
+  await db.updateOne(id, {$set:{nome, idade, uf}})
+  res.redirect("/?edit=true")
 })
 
 
